@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>6号自动化助手 - 流程编辑器</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/lucide-static@0.263.1/font/lucide.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- 侧边栏 - 操作卡片 -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <h2>🎨 操作卡片</h2>
+
+            </div>
+
+            <div class="card-categories">
+
+                <!-- 鼠标操作 -->
+
+                <div class="card-category">
+
+                    <h3>🖱️ 鼠标操作</h3>
+
+                    <div class="card-list">
+
+                        <div class="action-card" draggable="true" data-type="click">
+
+                            <span class="card-icon">👆</span>
+
+                            <span class="card-name">鼠标点击</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="double_click">
+
+                            <span class="card-icon">👆👆</span>
+
+                            <span class="card-name">双击</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="right_click">
+
+                            <span class="card-icon">🖱️</span>
+
+                            <span class="card-name">右键点击</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="move">
+
+                            <span class="card-icon">➡️</span>
+
+                            <span class="card-name">移动鼠标</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="drag">
+
+                            <span class="card-icon">↔️</span>
+
+                            <span class="card-name">拖拽</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="scroll">
+
+                            <span class="card-icon">🔃</span>
+
+                            <span class="card-name">滚轮</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="fps_move">
+
+                            <span class="card-icon">🎮</span>
+
+                            <span class="card-name">FPS视角</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <!-- 键盘操作 -->
+
+                <div class="card-category">
+
+                    <h3>⌨️ 键盘操作</h3>
+
+                    <div class="card-list">
+
+                        <div class="action-card" draggable="true" data-type="type">
+
+                            <span class="card-icon">📝</span>
+
+                            <span class="card-name">输入文本</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="press">
+
+                            <span class="card-icon">⬇️</span>
+
+                            <span class="card-name">按键</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="hotkey">
+
+                            <span class="card-icon">🔧</span>
+
+                            <span class="card-name">组合键</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="key_down">
+
+                            <span class="card-icon">🔽</span>
+
+                            <span class="card-name">按下按键</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="key_release">
+
+                            <span class="card-icon">🔼</span>
+
+                            <span class="card-name">松开按键</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <!-- 图像识别 -->
+
+                <div class="card-category">
+
+                    <h3>🖼️ 图像识别</h3>
+
+                    <div class="card-list">
+
+                        <div class="action-card" draggable="true" data-type="image_find">
+
+                            <span class="card-icon">🔍</span>
+
+                            <span class="card-name">图片识别</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="image_click">
+
+                            <span class="card-icon">🎯</span>
+
+                            <span class="card-name">图片点击</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="wait_image">
+
+                            <span class="card-icon">👁️</span>
+
+                            <span class="card-name">等待图片出现</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="wait_image_disappear">
+
+                            <span class="card-icon">🚫</span>
+
+                            <span class="card-name">等待图片消失</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="continuous_click">
+
+                            <span class="card-icon">🔄</span>
+
+                            <span class="card-name">常驻点击</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="image_click_ocr">
+
+                            <span class="card-icon">🔤</span>
+
+                            <span class="card-name">OCR图片点击</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="change_detection">
+
+                            <span class="card-icon">🎯</span>
+
+                            <span class="card-name">变换识别</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="color_check">
+
+                            <span class="card-icon">🎨</span>
+
+                            <span class="card-name">颜色识别</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="pixel_position">
+
+                            <span class="card-icon">🎯</span>
+
+                            <span class="card-name">像素级定位</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="screenshot">
+
+                            <span class="card-icon">📷</span>
+
+                            <span class="card-name">截图保存</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <!-- 控制流程 -->
+
+                <div class="card-category">
+
+                    <h3>⚙️ 控制流程</h3>
+
+                    <div class="card-list">
+
+                        <div class="action-card" draggable="true" data-type="delay">
+
+                            <span class="card-icon">⏰</span>
+
+                            <span class="card-name">延迟等待</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="log">
+
+                            <span class="card-icon">📋</span>
+
+                            <span class="card-name">日志输出</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="jump_group">
+
+                            <span class="card-icon">↪️</span>
+
+                            <span class="card-name">跳转组合</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="call_group">
+
+                            <span class="card-icon">📞</span>
+
+                            <span class="card-name">调用组合</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="multi_hold">
+
+                            <span class="card-icon">🤏</span>
+
+                            <span class="card-name">同时按住</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="repeat_start">
+
+                            <span class="card-icon">🔁</span>
+
+                            <span class="card-name">重复(头)</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="repeat_end">
+
+                            <span class="card-icon">🔚</span>
+
+                            <span class="card-name">重复(尾)</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <!-- 窗口操作 -->
+
+                <div class="card-category">
+
+                    <h3>🪟 窗口操作</h3>
+
+                    <div class="card-list">
+
+                        <div class="action-card" draggable="true" data-type="resize_window">
+
+                            <span class="card-icon">📐</span>
+
+                            <span class="card-name">调整窗口大小</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="move_window">
+
+                            <span class="card-icon">🪟</span>
+
+                            <span class="card-name">移动窗口位置</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="activate_window">
+
+                            <span class="card-icon">🔲</span>
+
+                            <span class="card-name">切换至窗口</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="close_window">
+
+                            <span class="card-icon">❌</span>
+
+                            <span class="card-name">强制关闭程序</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="set_windowed">
+
+                            <span class="card-icon">🖼️</span>
+
+                            <span class="card-name">调整为窗口模式</span>
+
+                        </div>
+
+                        <div class="action-card" draggable="true" data-type="window_exists">
+
+                            <span class="card-icon">🔎</span>
+
+                            <span class="card-name">检测窗口</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        
+
+        <!-- 主画布区域 -->
+
+        <main class="canvas-area">
+
+            <div class="toolbar">
+
+                <div class="toolbar-left">
+
+                    <button id="btn-new" class="btn btn-primary">
+
+                        <span>📄</span> 新建
+
+                    </button>
+
+                    <button id="btn-open" class="btn">
+
+                        <span>📂</span> 打开
+
+                    </button>
+
+                    <button id="btn-save" class="btn btn-success">
+
+                        <span>💾</span> 保存
+
+                    </button>
+
+                    <button id="btn-edit-desc" class="btn">
+
+                        <span>📝</span> 编辑说明
+
+                    </button>
+
+                </div>
+
+                <div class="toolbar-center">
+
+                    <input type="text" id="workflow-name" placeholder="流程名称" value="新建流程">
+                    
+                    <div class="search-box" style="margin-left: 20px; display: flex; align-items: center; gap: 5px;">
+                        <input type="text" id="step-search" placeholder="搜索当前组合" style="width: 140px; padding: 6px 10px; border: 1px solid #475569; border-radius: 4px; background: #334155; color: #e2e8f0;">
+                        <button class="btn btn-sm" onclick="searchCurrentGroup()" style="padding: 6px 10px; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer;">🔍</button>
+                    </div>
+
+                </div>
+
+                <div class="toolbar-right">
+
+                    <button id="btn-add-group" class="btn btn-primary">
+
+                        <span>➕</span> 添加组合
+
+                    </button>
+                    
+                    <button onclick="clearAllEditable()" class="btn" style="background: #6366f1;">
+
+                        <span>🔒</span> 全部不可改
+
+                    </button>
+
+                    <button id="btn-clear" class="btn btn-danger">
+
+                        <span>🗑️</span> 清空
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            
+
+            <!-- 组合标签栏 -->
+
+            <div class="groups-tabs">
+
+                <div id="groups-tab-list" class="groups-tab-list">
+
+                    <!-- 组合标签将在这里动态生成 -->
+
+                </div>
+
+            </div>
+
+            
+
+            <!-- 组合设置栏 -->
+
+            <div id="group-settings" class="group-settings">
+
+                <div class="setting-item">
+
+                    <label>组合名称:</label>
+
+                    <input type="text" id="group-name" placeholder="组合名称">
+
+                    <button type="button" id="set-default-btn" class="btn btn-sm" onclick="setCurrentAsDefault()" title="设为脚本启动时执行的组合">⭐ 设为默认</button>
+
+                </div>
+
+                <div class="setting-item">
+
+                    <label>执行模式:</label>
+
+                    <div class="loop-mode-group" id="loop-mode-group">
+
+                        <button type="button" class="loop-mode-btn active" data-mode="once">1次</button>
+
+                        <button type="button" class="loop-mode-btn" data-mode="count">次数</button>
+
+                        <button type="button" class="loop-mode-btn" data-mode="duration">时长</button>
+
+                        <button type="button" class="loop-mode-btn" data-mode="infinite">∞</button>
+
+                    </div>
+
+                    <input type="number" id="group-loop-value" min="1" value="1" class="loop-value-input">
+
+                    <span id="group-loop-unit" class="loop-unit">次</span>
+
+                </div>
+
+                <div class="setting-item humanize-settings">
+
+                    <label>🎭 人类化:</label>
+
+                    <label class="toggle-switch" title="启用后操作更随机，不易被检测">
+
+                        <input type="checkbox" id="humanize-enabled" checked>
+
+                        <span class="toggle-slider"></span>
+
+                    </label>
+
+                    <span class="setting-hint">位置偏移±</span>
+
+                    <input type="number" id="humanize-position" min="0" max="20" value="3" class="small-input" title="点击位置随机偏移像素">
+
+                    <span class="setting-hint">px | 延迟</span>
+
+                    <input type="number" id="humanize-delay-min" min="0" max="1000" value="20" step="10" class="small-input" title="最小延迟(毫秒)">
+
+                    <span class="setting-hint">~</span>
+
+                    <input type="number" id="humanize-delay-max" min="0" max="2000" value="150" step="10" class="small-input" title="最大延迟(毫秒)">
+
+                    <span class="setting-hint">ms</span>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="canvas-container">
+
+                <div id="canvas" class="canvas">
+
+                    <div class="canvas-placeholder">
+
+                        <p>🎨 将左侧卡片拖拽到这里</p>
+
+                        <p>创建自动化流程</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+        
+
+        <!-- 右侧属性面板 -->
+
+        <aside class="properties-panel">
+
+            <div class="panel-header">
+
+                <h2>⚙️ 属性设置</h2>
+
+            </div>
+
+            <div id="properties-content" class="properties-content">
+
+                <p class="empty-hint">选择一个步骤来编辑属性</p>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+    
+
+    <!-- 打开流程对话框 -->
+
+    <div id="open-dialog" class="dialog-overlay" style="display: none;">
+
+        <div class="dialog">
+
+            <div class="dialog-header">
+
+                <h3>📂 打开流程</h3>
+
+                <button class="dialog-close" onclick="closeOpenDialog()">&times;</button>
+
+            </div>
+
+            <div class="dialog-content">
+
+                <div id="workflow-list" class="workflow-list">
+
+                    <p>加载中...</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <!-- 保存对话框 -->
+
+    <div id="save-dialog" class="dialog-overlay" style="display: none;">
+
+        <div class="dialog">
+
+            <div class="dialog-header">
+
+                <h3>💾 保存流程</h3>
+
+                <button class="dialog-close" onclick="closeSaveDialog()">&times;</button>
+
+            </div>
+
+            <div class="dialog-content">
+
+                <div class="form-group">
+
+                    <label>文件名</label>
+
+                    <input type="text" id="save-filename" placeholder="workflow.json">
+
+                </div>
+
+                <button class="btn btn-success" onclick="confirmSave()">确认保存</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <!-- 说明编辑对话框 -->
+
+    <div id="desc-editor-dialog" class="dialog-overlay" style="display: none;">
+
+        <div class="dialog">
+
+            <div class="dialog-header">
+
+                <h3>📝 编辑配置信息</h3>
+
+                <button class="dialog-close" onclick="closeDescEditor()">&times;</button>
+
+            </div>
+
+            <div class="dialog-content">
+
+                <div class="form-group">
+
+                    <label>配置说明</label>
+
+                    <textarea id="desc-text" placeholder="输入简单的配置说明..." rows="4"></textarea>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>详情链接 (可选)</label>
+
+                    <input type="text" id="desc-url" placeholder="https://example.com/help">
+
+                    <small style="color: gray;">点击「查看详情」按钮将打开此链接</small>
+
+                </div>
+
+                <div class="dialog-buttons">
+
+                    <button class="btn btn-success" onclick="saveDescription()">💾 保存</button>
+
+                    <button class="btn" onclick="closeDescEditor()">取消</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <!-- 图片选择弹窗 -->
+
+    <div id="image-picker-dialog" class="dialog-overlay" style="display: none;">
+
+        <div class="dialog dialog-large">
+
+            <div class="dialog-header">
+
+                <h3>📷 选择图片</h3>
+
+                <button class="dialog-close" onclick="closeImagePickerDialog()">&times;</button>
+
+            </div>
+
+            <div class="dialog-content">
+
+                <div class="image-picker-toolbar">
+
+                    <button class="btn btn-sm" onclick="refreshImagePickerList()">🔄 刷新列表</button>
+
+                    <span id="image-picker-count" style="color: gray; margin-left: 10px;"></span>
+
+                </div>
+
+                <div id="image-picker-grid" class="image-picker-grid">
+
+                    <p style="text-align: center; color: gray;">加载中...</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <!-- 自定义消息弹窗 -->
+
+    <div id="msg-dialog" class="dialog-overlay" style="display: none;">
+
+        <div class="dialog msg-dialog">
+
+            <div class="msg-icon" id="msg-icon">✓</div>
+
+            <div class="msg-text" id="msg-text">消息内容</div>
+
+            <div class="msg-buttons" id="msg-buttons">
+
+                <button class="btn btn-primary" onclick="closeMsgDialog(true)">确定</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <!-- 按键识别弹窗 -->
+
+    <div id="key-detector-dialog" class="dialog-overlay" style="display: none;">
+
+        <div class="dialog" style="width: 400px;">
+
+            <div class="dialog-header">
+
+                <h3>⌨️ 按键识别</h3>
+
+                <button class="dialog-close" onclick="closeKeyDetector()">&times;</button>
+
+            </div>
+
+            <div class="dialog-content" style="text-align: center;">
+
+                <p style="color: #888; margin-bottom: 15px;">按下任意键盘按键进行识别</p>
+
+                <div id="key-detector-result" style="font-size: 32px; font-weight: bold; color: #6366f1; padding: 30px; background: #1a1a2e; border-radius: 10px; margin: 15px 0; min-height: 40px;">
+
+                    等待按键...
+
+                </div>
+
+                <p style="color: #888; font-size: 12px; margin-top: 10px;">
+
+                    常用按键: enter, tab, space, esc, backspace, delete<br>
+
+                    方向键: up, down, left, right<br>
+
+                    功能键: f1~f12, ctrl, alt, shift, win
+
+                </p>
+
+                <div class="dialog-buttons" style="margin-top: 20px;">
+
+                    <button class="btn btn-primary" id="key-detector-use" onclick="useDetectedKey()" disabled>📋 使用此按键</button>
+
+                    <button class="btn" onclick="closeKeyDetector()">关闭</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
+
